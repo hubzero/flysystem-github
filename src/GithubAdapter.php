@@ -197,7 +197,17 @@ class GithubAdapter extends AbstractAdapter
      */
     public function getMetadata($path)
     {
-        return $this->getApi()->getMetaData($path);
+        $metadata = $this->getApi()->getMetaData($path);
+
+        if (is_array(current($metadata))) {
+            return [
+                'type' => 'dir',
+                'size' => 0,
+                'path' => $path
+            ];
+        }
+
+        return $metadata;
     }
 
     /**
