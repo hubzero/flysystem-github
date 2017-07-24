@@ -185,7 +185,7 @@ class GithubAdapter extends AbstractAdapter
      */
     public function listContents($path = '/', $recursive = false)
     {
-        return $this->getApi()->getRecursiveMetadata($path, $recursive);
+        return $this->getApi()->getRecursiveMetadata($path, true);
     }
 
     /**
